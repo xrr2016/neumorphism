@@ -24,39 +24,100 @@ class AppStateProviderState extends State<AppStateProvider> {
 
   changeRadius(double val) {
     state.radius = val;
+    setCode();
     setState(() {});
   }
 
   changeSize(double val) {
     state.size = val;
     state.blur = val / 10 * 2;
+    setCode();
     setState(() {});
   }
 
   changeBlur(double val) {
     state.blur = val;
+    setCode();
     setState(() {});
   }
 
   changeDistance(double val) {
     state.distance = val;
     state.blur = val * 2;
+    setCode();
     setState(() {});
   }
 
   changeColor(Color color) {
     state.color = color;
+    setCode();
     setState(() {});
   }
 
   changeIntensity(double val) {
     state.intensity = val;
+    setCode();
+    setState(() {});
+  }
+
+  setCode() {
+    String code = '''
+  Container(
+    width: 500.0,
+    height: 500.0,
+    color: Colors.amber,
+    alignment: Alignment.center,
+    child: Container(
+      color: '${state.color.toString()}',
+      child: Container(
+        width: state.size,
+        height: state.size,
+        transformAlignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: state.color,
+          // gradient: RadialGradient(
+          //   colors: [
+          //     Color(0xff23a450).withOpacity(1.0),
+          //     Color(0xff23a450).withOpacity(1.0)
+          //   ],
+          //   focal: Alignment.bottomLeft,
+          //   center: Alignment.bottomRight,
+          //   radius: 0.0,
+          // ),
+          borderRadius: BorderRadius.circular(state.radius),
+          boxShadow: [
+            BoxShadow(
+              color: state.color.withOpacity(state.intensity),
+              offset: Offset(
+                -state.size / 10,
+                -state.size / 10.0,
+              ),
+              blurRadius: state.blur,
+              spreadRadius: 0.0,
+            ),
+            BoxShadow(
+              color: state.color.withOpacity(state.intensity),
+              offset: Offset(
+                state.size / 10,
+                state.size / 10,
+              ),
+              blurRadius: state.blur,
+              spreadRadius: 0.0,
+            ),
+          ],
+        ),
+      ),
+    ),
+  )
+  ''';
+    state.code = code;
     setState(() {});
   }
 
   @override
   void initState() {
     state = widget.state;
+    setCode();
     super.initState();
   }
 

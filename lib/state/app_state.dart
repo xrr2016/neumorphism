@@ -25,25 +25,6 @@ class AppState {
     this.intensity = 0.6,
     this.blur = 20.0,
     this.shape = Shape.Top,
-    this.code = '''
-      decoration: BoxDecoration(
-        color: state.color,
-        borderRadius: BorderRadius.circular(state.radius),
-        boxShadow: [
-          BoxShadow(
-            color: state.color.withOpacity(state.intensity),
-            offset: Offset(-state.size / 10, -state.size / 10.0),
-            blurRadius: state.blur,
-            spreadRadius: 0.0,
-          ),
-          BoxShadow(
-            color: state.color.withOpacity(state.intensity),
-            offset: Offset(state.size / 10, state.size / 10),
-            blurRadius: state.blur,
-            spreadRadius: 0.0,
-          ),
-        ],
-      )
-    ''',
+    this.code = '',
   });
 }
