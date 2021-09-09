@@ -7,7 +7,6 @@ class PreviewBox extends StatelessWidget {
     late final AppState state = provider.state;
 
     return Container(
-      width: 400.0,
       height: 400.0,
       alignment: Alignment.center,
       child: Container(

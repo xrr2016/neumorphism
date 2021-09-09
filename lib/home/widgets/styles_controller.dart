@@ -61,7 +61,6 @@ class _StylesControllerState extends State<StylesController> {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        width: 300.0,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -150,7 +149,6 @@ class _StylesControllerState extends State<StylesController> {
               ),
             ),
             Container(
-              color: Colors.pink,
               child: ListTile(
                 leading: Text(
                   'Distance',

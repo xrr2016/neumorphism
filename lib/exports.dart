@@ -1,4 +1,5 @@
 export 'package:flutter/material.dart';
+export 'package:flutter/services.dart';
 export 'package:flutter_highlight/flutter_highlight.dart';
 export 'package:flutter_highlight/themes/github.dart';
 
