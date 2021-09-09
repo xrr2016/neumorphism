@@ -31,13 +31,15 @@ class _HomePageState extends State<HomePage> {
         color: state.color,
         child: Row(
           children: [
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                PreviewBox(),
-                StylesController(),
-              ],
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  PreviewBox(),
+                  StylesController(),
+                ],
+              ),
             ),
             DecorationCode(),
           ],

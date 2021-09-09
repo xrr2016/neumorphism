@@ -9,6 +9,7 @@ class PreviewBox extends StatelessWidget {
     return Container(
       height: 400.0,
       alignment: Alignment.center,
+      color: Colors.purple,
       child: Container(
         width: state.size,
         height: state.size,
