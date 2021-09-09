@@ -17,5 +17,5 @@ jobs:
         uses: erickzanardo/flutter-gh-pages@v6
         with:
           webRenderer: html
-          targetBranch: main
+          targetBranch: gh-pages
 
