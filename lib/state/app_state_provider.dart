@@ -43,7 +43,7 @@ class AppStateProviderState extends State<AppStateProvider> {
 
   changeDistance(double val) {
     state.distance = val;
-    state.blur = val * 2;
+    // state.blur = val * 2;
     setCode();
     setState(() {});
   }
@@ -70,38 +70,29 @@ class AppStateProviderState extends State<AppStateProvider> {
     child: Container(
       color: '${state.color.toString()}',
       child: Container(
-        width: state.size,
-        height: state.size,
+        width: '${state.size}',
+        height: '${state.size}',
         transformAlignment: Alignment.center,
         decoration: BoxDecoration(
           color: state.color,
-          // gradient: RadialGradient(
-          //   colors: [
-          //     Color(0xff23a450).withOpacity(1.0),
-          //     Color(0xff23a450).withOpacity(1.0)
-          //   ],
-          //   focal: Alignment.bottomLeft,
-          //   center: Alignment.bottomRight,
-          //   radius: 0.0,
-          // ),
-          borderRadius: BorderRadius.circular(state.radius),
+          borderRadius: BorderRadius.circular('${state.radius}'),
           boxShadow: [
             BoxShadow(
               color: state.color.withOpacity(state.intensity),
               offset: Offset(
-                -state.size / 10,
-                -state.size / 10.0,
+                ${-state.size / 10.0},
+                ${-state.size / 10.0},
               ),
-              blurRadius: state.blur,
+              blurRadius: ${state.blur},
               spreadRadius: 0.0,
             ),
             BoxShadow(
               color: state.color.withOpacity(state.intensity),
               offset: Offset(
-                state.size / 10,
-                state.size / 10,
+                ${state.size / 10.0},
+                ${state.size / 10.0},
               ),
-              blurRadius: state.blur,
+              blurRadius: ${state.blur},
               spreadRadius: 0.0,
             ),
           ],

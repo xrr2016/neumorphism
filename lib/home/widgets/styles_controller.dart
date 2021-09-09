@@ -149,23 +149,26 @@ class _StylesControllerState extends State<StylesController> {
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            ListTile(
-              leading: Text(
-                'Distance',
-                style: TextStyle(color: Colors.white),
-              ),
-              title: Slider(
-                min: 5.0,
-                max: 50.0,
-                label: state.distance.toString(),
-                activeColor: Colors.amber,
-                inactiveColor: Colors.white70,
-                value: state.distance,
-                onChanged: provider.changeDistance,
-              ),
-              trailing: Text(
-                state.distance.floor().toString(),
-                style: TextStyle(color: Colors.white),
+            Container(
+              color: Colors.pink,
+              child: ListTile(
+                leading: Text(
+                  'Distance',
+                  style: TextStyle(color: Colors.white),
+                ),
+                title: Slider(
+                  min: 5.0,
+                  max: 50.0,
+                  label: state.distance.toString(),
+                  activeColor: Colors.amber,
+                  inactiveColor: Colors.white70,
+                  value: state.distance,
+                  onChanged: provider.changeDistance,
+                ),
+                trailing: Text(
+                  state.distance.floor().toString(),
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
             // Slider(

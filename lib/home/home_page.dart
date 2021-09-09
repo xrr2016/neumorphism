@@ -16,8 +16,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.ac_unit),
+          )
+        ],
         backgroundColor: state.color,
         title: Text('Neumorphism'),
+        centerTitle: false,
       ),
       body: Container(
         color: state.color,
