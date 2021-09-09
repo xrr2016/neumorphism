@@ -1,4 +1,4 @@
-# neumorphism
+# Neumorphism
 
 A new Flutter project.
 
