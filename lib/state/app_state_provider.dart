@@ -49,6 +49,8 @@ class AppStateProviderState extends State<AppStateProvider> {
   }
 
   changeColor(Color color) {
+    // debugPrint(color.value.toRadixString(16));
+
     state.color = color;
     setCode();
     setState(() {});
@@ -61,38 +63,44 @@ class AppStateProviderState extends State<AppStateProvider> {
   }
 
   setCode() {
+    final String colorString = state.color.value.toRadixString(16);
+    final Color darkColor = colorLuminance(colorString, lum: state.intensity);
+    final Color lightColor = colorLuminance(colorString, lum: -state.intensity);
+    final Color baseColor =
+        Color(int.parse('0x${state.color.value.toRadixString(16)}'));
+
     String code = '''
   Container(
     width: 500.0,
     height: 500.0,
-    color: Colors.amber,
+    color: $baseColor,
     alignment: Alignment.center,
     child: Container(
-      color: '${state.color.toString()}',
+      color: $baseColor,
       child: Container(
-        width: '${state.size}',
-        height: '${state.size}',
+        width: ${state.size.round()},
+        height: ${state.size.round()},
         transformAlignment: Alignment.center,
         decoration: BoxDecoration(
           color: state.color,
-          borderRadius: BorderRadius.circular('${state.radius}'),
+          borderRadius: BorderRadius.circular(${state.radius.round()}),
           boxShadow: [
             BoxShadow(
-              color: state.color.withOpacity(state.intensity),
+              color: $darkColor,
               offset: Offset(
-                ${-state.size / 10.0},
-                ${-state.size / 10.0},
+                ${-state.distance.round()},
+                ${-state.distance.round()},
               ),
-              blurRadius: ${state.blur},
+              blurRadius: ${state.blur.round()},
               spreadRadius: 0.0,
             ),
             BoxShadow(
-              color: state.color.withOpacity(state.intensity),
+              color: $lightColor,
               offset: Offset(
-                ${state.size / 10.0},
-                ${state.size / 10.0},
+                ${state.distance},
+                ${state.distance},
               ),
-              blurRadius: ${state.blur},
+              blurRadius: ${state.blur.round()},
               spreadRadius: 0.0,
             ),
           ],

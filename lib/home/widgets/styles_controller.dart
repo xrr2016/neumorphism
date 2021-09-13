@@ -57,128 +57,115 @@ class _StylesControllerState extends State<StylesController> {
     );
   }
 
+  ListTile _buildListTile(
+    String leading,
+    double min,
+    double max,
+    double value,
+    String trailing,
+    Function(double) onChanged,
+  ) {
+    return ListTile(
+      leading: Text(
+        leading,
+        style: TextStyle(color: Colors.white),
+      ),
+      title: Slider(
+        min: min,
+        max: max,
+        value: value,
+        // divisions: 1,
+        label: value.toString(),
+        activeColor: Colors.amber,
+        inactiveColor: Colors.white70,
+        onChanged: onChanged,
+      ),
+      trailing: Text(
+        trailing,
+        style: TextStyle(color: Colors.white),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.pink,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ListTile(
-            title: Text(
-              'Primary Color',
-              style: TextStyle(color: Colors.white),
-            ),
-            subtitle: Text(
-              'Choose primary color',
-              style: TextStyle(color: Colors.white54, fontSize: 12.0),
-            ),
-            trailing: GestureDetector(
-              onTap: () {
-                _openDialog("Main Color picker");
-              },
-              child: Container(
-                width: 30.0,
-                height: 30.0,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: state.color,
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 2.0,
+    return Expanded(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 100.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ListTile(
+                title: Text(
+                  'Primary Color',
+                  style: TextStyle(color: Colors.white),
+                ),
+                subtitle: Text(
+                  'Choose primary color',
+                  style: TextStyle(color: Colors.white54, fontSize: 12.0),
+                ),
+                trailing: GestureDetector(
+                  onTap: () {
+                    _openDialog("Main Color picker");
+                  },
+                  child: Container(
+                    width: 30.0,
+                    height: 30.0,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: state.color,
+                      border: Border.all(
+                        color: Colors.white,
+                        width: 2.0,
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
-          ListTile(
-            leading: Text(
-              'Radius',
-              style: TextStyle(color: Colors.white),
-            ),
-            title: Slider(
-              min: 0.0,
-              max: 200.0,
-              label: state.radius.toString(),
-              activeColor: Colors.amber,
-              inactiveColor: Colors.white70,
-              value: state.radius,
-              onChanged: provider.changeRadius,
-            ),
-            trailing: Text(
-              state.radius.floor().toString(),
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          ListTile(
-            leading: Text(
-              'Size',
-              style: TextStyle(color: Colors.white),
-            ),
-            title: Slider(
-              min: 50.0,
-              max: 300.0,
-              label: state.size.toString(),
-              activeColor: Colors.amber,
-              inactiveColor: Colors.white70,
-              value: state.size,
-              onChanged: provider.changeSize,
-            ),
-            trailing: Text(
-              state.size.floor().toString(),
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          ListTile(
-            leading: Text(
-              'Blur',
-              style: TextStyle(color: Colors.white),
-            ),
-            title: Slider(
-              min: 0.0,
-              max: 100.0,
-              label: state.blur.toString(),
-              activeColor: Colors.amber,
-              inactiveColor: Colors.white70,
-              value: state.blur,
-              onChanged: provider.changeBlur,
-            ),
-            trailing: Text(
-              state.blur.floor().toString(),
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          Container(
-            child: ListTile(
-              leading: Text(
+              _buildListTile(
+                'Size',
+                100.0,
+                300.0,
+                state.size,
+                state.size.round().toString(),
+                provider.changeSize,
+              ),
+              _buildListTile(
+                'Blur',
+                0.0,
+                100.0,
+                state.blur,
+                state.blur.round().toString(),
+                provider.changeBlur,
+              ),
+              _buildListTile(
+                'Radius',
+                0.0,
+                200.0,
+                state.radius,
+                state.radius.round().toString(),
+                provider.changeRadius,
+              ),
+              _buildListTile(
                 'Distance',
-                style: TextStyle(color: Colors.white),
+                5.0,
+                50.0,
+                state.distance,
+                state.distance.round().toString(),
+                provider.changeDistance,
               ),
-              title: Slider(
-                min: 5.0,
-                max: 50.0,
-                label: state.distance.toString(),
-                activeColor: Colors.amber,
-                inactiveColor: Colors.white70,
-                value: state.distance,
-                onChanged: provider.changeDistance,
+              _buildListTile(
+                'Intensity',
+                0.1,
+                0.6,
+                state.intensity,
+                state.intensity.toStringAsFixed(1),
+                provider.changeIntensity,
               ),
-              trailing: Text(
-                state.distance.floor().toString(),
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
+            ],
           ),
-          // Slider(
-          //   min: 0.01,
-          //   max: 1.0,
-          //   label: state.intensity.toString(),
-          //   activeColor: Colors.amber,
-          //   inactiveColor: Colors.white70,
-          //   value: state.intensity,
-          //   onChanged: provider.changeIntensity,
-          // ),
-        ],
+        ),
       ),
     );
   }

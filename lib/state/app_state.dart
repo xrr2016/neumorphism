@@ -18,12 +18,12 @@ class AppState {
   String code;
 
   AppState({
-    this.color = Colors.blueAccent,
+    this.color = const Color(0xff333333),
     this.size = 300.0,
     this.radius = 50.0,
     this.distance = 25,
-    this.intensity = 0.6,
-    this.blur = 20.0,
+    this.intensity = 0.3,
+    this.blur = 60.0,
     this.shape = Shape.Top,
     this.code = '',
   });

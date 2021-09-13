@@ -15,34 +15,36 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () {},
-      //       icon: Icon(Icons.ac_unit),
-      //     )
-      //   ],
-      //   backgroundColor: state.color,
-      //   title: Text('Neumorphism'),
-      //   centerTitle: false,
-      //   elevation: 0.0,
-      // ),
-      body: Container(
-        color: state.color,
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  PreviewBox(),
-                  StylesController(),
-                ],
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.gite),
+          )
+        ],
+        backgroundColor: state.color,
+        title: Text('Neumorphism'),
+        centerTitle: false,
+        // elevation: 0.0,
+      ),
+      body: SafeArea(
+        child: Container(
+          color: state.color,
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    PreviewBox(),
+                    StylesController(),
+                  ],
+                ),
               ),
-            ),
-            DecorationCode(),
-          ],
+              DecorationCode(),
+            ],
+          ),
         ),
       ),
     );
