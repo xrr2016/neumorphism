@@ -93,14 +93,14 @@ class PreviewBox extends StatelessWidget {
           Positioned(
             top: 25.0,
             left: pos,
-            child: RotatedBox(
-              quarterTurns: 5,
+            child: Transform.rotate(
+              angle: -45.0,
               child: IconButton(
                 onPressed: () {
                   provider.changeDirection(Direction.topLeft);
                 },
                 icon: Icon(
-                  Icons.square_foot_sharp,
+                  Icons.light,
                   color: state.direction == Direction.topLeft
                       ? Colors.amber
                       : Colors.white,
@@ -111,14 +111,14 @@ class PreviewBox extends StatelessWidget {
           Positioned(
             top: 25.0,
             right: pos,
-            child: RotatedBox(
-              quarterTurns: 2,
+            child: Transform.rotate(
+              angle: 45.0,
               child: IconButton(
                 onPressed: () {
                   provider.changeDirection(Direction.topRight);
                 },
                 icon: Icon(
-                  Icons.square_foot_sharp,
+                  Icons.light,
                   color: state.direction == Direction.topRight
                       ? Colors.amber
                       : Colors.white,
@@ -129,14 +129,14 @@ class PreviewBox extends StatelessWidget {
           Positioned(
             bottom: 10.0,
             right: pos,
-            child: RotatedBox(
-              quarterTurns: 3,
+            child: Transform.rotate(
+              angle: 90.0,
               child: IconButton(
                 onPressed: () {
                   provider.changeDirection(Direction.bottomLeft);
                 },
                 icon: Icon(
-                  Icons.square_foot_sharp,
+                  Icons.light,
                   color: state.direction == Direction.bottomLeft
                       ? Colors.amber
                       : Colors.white,
@@ -147,15 +147,18 @@ class PreviewBox extends StatelessWidget {
           Positioned(
             bottom: 10.0,
             left: pos,
-            child: IconButton(
-              onPressed: () {
-                provider.changeDirection(Direction.bottomRight);
-              },
-              icon: Icon(
-                Icons.square_foot_outlined,
-                color: state.direction == Direction.bottomRight
-                    ? Colors.amber
-                    : Colors.white,
+            child: Transform.rotate(
+              angle: -90.0,
+              child: IconButton(
+                onPressed: () {
+                  provider.changeDirection(Direction.bottomRight);
+                },
+                icon: Icon(
+                  Icons.light,
+                  color: state.direction == Direction.bottomRight
+                      ? Colors.amber
+                      : Colors.white,
+                ),
               ),
             ),
           ),
