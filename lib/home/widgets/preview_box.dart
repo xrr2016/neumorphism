@@ -36,12 +36,12 @@ class PreviewBox extends StatelessWidget {
         lightOffset = Offset(-state.distance, state.distance);
         break;
       case Direction.bottomLeft:
-        darkOffset = Offset(-state.distance, state.distance);
-        lightOffset = Offset(state.distance, -state.distance);
-        break;
-      case Direction.bottomRight:
         darkOffset = Offset(state.distance, state.distance);
         lightOffset = Offset(-state.distance, -state.distance);
+        break;
+      case Direction.bottomRight:
+        darkOffset = Offset(-state.distance, state.distance);
+        lightOffset = Offset(state.distance, -state.distance);
         break;
       default:
     }
