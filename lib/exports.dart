@@ -8,6 +8,8 @@ export 'package:flutter_highlight/themes/github.dart';
 export 'package:flutter_highlight/themes/atom-one-dark.dart';
 export 'package:flutter_gen/gen_l10n/app_localizations.dart';
 export 'package:google_fonts/google_fonts.dart';
+export 'package:flutter_svg/flutter_svg.dart';
+export 'package:url_launcher/url_launcher.dart';
 
 export './app.dart';
 export './utils.dart';

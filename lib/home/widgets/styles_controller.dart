@@ -101,9 +101,9 @@ class _StylesControllerState extends State<StylesController> {
                   AppLocalizations.of(context)!.primary,
                   style: const TextStyle(color: Colors.white),
                 ),
-                trailing: GestureDetector(
+                trailing: InkWell(
                   onTap: () {
-                    _openDialog("Main Color picker");
+                    _openDialog(AppLocalizations.of(context)!.primary);
                   },
                   child: Container(
                     width: 30.0,

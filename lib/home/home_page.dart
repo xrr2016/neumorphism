@@ -14,15 +14,33 @@ class _HomePageState extends State<HomePage> {
   late final AppStateProviderState provider = AppStateProvider.of(context);
   late final AppState state = provider.state;
 
+  void _launchURL() async {
+    const url = 'https://github.com/xrr2016/neumorphism';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: const [
-          // IconButton(
-          //   onPressed: () {},
-          //   icon: const Icon(Icons.language_outlined),
-          // )
+        actions: [
+          InkWell(
+            onTap: _launchURL,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: SvgPicture.asset(
+                'assets/images/github.svg',
+                width: 22.0,
+                height: 22.0,
+                color: Colors.white,
+                semanticsLabel: 'Github',
+              ),
+            ),
+          ),
         ],
         backgroundColor: state.color,
         title: const Text('Neumorphism'),
