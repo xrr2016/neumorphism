@@ -14,7 +14,7 @@ class _StylesControllerState extends State<StylesController> {
   List<Widget> _buildColorItems() {
     List<Widget> items = [];
 
-    Colors.primaries.asMap().forEach((key, color) {
+    colors.asMap().forEach((key, color) {
       items.add(
         InkWell(
           onTap: () {
@@ -39,11 +39,11 @@ class _StylesControllerState extends State<StylesController> {
       context: context,
       builder: (_) {
         return AlertDialog(
-          contentPadding: const EdgeInsets.all(6.0),
+          contentPadding: const EdgeInsets.all(10.0),
           title: Text(title),
           content: Container(
-            width: MediaQuery.of(context).size.width * 0.8,
-            height: MediaQuery.of(context).size.width * 0.8,
+            width: MediaQuery.of(context).size.width * 0.5,
+            height: MediaQuery.of(context).size.height * 0.5,
             padding: const EdgeInsets.all(20.0),
             child: GridView.count(
               crossAxisSpacing: 10.0,

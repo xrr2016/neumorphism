@@ -16,6 +16,6 @@ jobs:
       - name: Deploy Flutter web app to github pages
         uses: erickzanardo/flutter-gh-pages@v6
         with:
-          webRenderer: html
+          # webRenderer: html
           targetBranch: gh-pages
 

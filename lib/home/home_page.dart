@@ -18,14 +18,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.language_outlined),
-          )
+        actions: const [
+          // IconButton(
+          //   onPressed: () {},
+          //   icon: const Icon(Icons.language_outlined),
+          // )
         ],
         backgroundColor: state.color,
-        title: Text('Neumorphism'),
+        title: const Text('Neumorphism'),
         centerTitle: false,
         // elevation: 0.0,
       ),
@@ -38,13 +38,13 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
+                  children: const [
                     PreviewBox(),
                     StylesController(),
                   ],
                 ),
               ),
-              DecorationCode(),
+              const DecorationCode(),
             ],
           ),
         ),

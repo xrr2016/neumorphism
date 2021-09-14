@@ -4,5 +4,7 @@
   "blur": "Blur",
   "radius": "Radius",
   "distance": "Distance",
-  "intensity": "Intensity"
+  "intensity": "Intensity",
+  "copy": "Copy",
+  "copied": "Copied"
 }

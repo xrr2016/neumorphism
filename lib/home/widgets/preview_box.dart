@@ -10,6 +10,8 @@ import '../../exports.dart';
 //   radius: 0.0,
 // ),
 class PreviewBox extends StatelessWidget {
+  const PreviewBox({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     late final AppStateProviderState provider = AppStateProvider.of(context);
@@ -29,6 +31,12 @@ class PreviewBox extends StatelessWidget {
         decoration: BoxDecoration(
           color: state.color,
           borderRadius: BorderRadius.circular(state.radius),
+          // image: const DecorationImage(
+          //   // fit: BoxFit.cover,
+          //   scale: 3.0,
+          //   image: AssetImage('assets/images/moon.jpg'),
+          //   alignment: Alignment.center,
+          // ),
           boxShadow: [
             BoxShadow(
               color: darkColor,

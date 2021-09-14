@@ -24,7 +24,7 @@ class DecorationCode extends StatelessWidget {
 
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Copyed.'),
+            content: Text(AppLocalizations.of(context)!.copied),
             action: SnackBarAction(
               label: 'OK',
               onPressed: () {
@@ -65,9 +65,9 @@ class DecorationCode extends StatelessWidget {
                 child: OutlinedButton.icon(
                   onPressed: _copyCode,
                   icon: const Icon(Icons.copy, color: Colors.white),
-                  label: const Text(
-                    'Copy',
-                    style: TextStyle(color: Colors.white),
+                  label: Text(
+                    AppLocalizations.of(context)!.copy,
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ),
               ),

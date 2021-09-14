@@ -5,9 +5,10 @@ class AppStateProvider extends StatefulWidget {
   final AppState state;
 
   const AppStateProvider({
-    required this.child,
+    Key? key,
     required this.state,
-  });
+    required this.child,
+  }) : super(key: key);
 
   static AppStateProviderState of(BuildContext context) {
     return context
@@ -97,8 +98,8 @@ class AppStateProviderState extends State<AppStateProvider> {
             BoxShadow(
               color: $lightColor,
               offset: Offset(
-                ${state.distance},
-                ${state.distance},
+                ${state.distance.round()},
+                ${state.distance.round()},
               ),
               blurRadius: ${state.blur.round()},
               spreadRadius: 0.0,
@@ -132,7 +133,7 @@ class AppStateProviderState extends State<AppStateProvider> {
 class _InheritedStateContainer extends InheritedWidget {
   final AppStateProviderState data;
 
-  _InheritedStateContainer({
+  const _InheritedStateContainer({
     required this.data,
     required Widget child,
   }) : super(child: child);
