@@ -81,6 +81,11 @@ class AppStateProviderState extends State<AppStateProvider> {
       child: Container(
         width: ${state.size.round()},
         height: ${state.size.round()},
+        child: Icon(
+          Icons.star,
+          size: ${(state.size / 3).round()},
+          color: Colors.amber,
+        ),
         transformAlignment: Alignment.center,
         decoration: BoxDecoration(
           color: state.color,

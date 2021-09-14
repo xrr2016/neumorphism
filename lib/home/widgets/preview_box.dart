@@ -19,6 +19,7 @@ class PreviewBox extends StatelessWidget {
     late final String colorString = state.color.value.toRadixString(16);
     final Color darkColor = colorLuminance(colorString, lum: state.intensity);
     final Color lightColor = colorLuminance(colorString, lum: -state.intensity);
+    final iconSize = state.size / 3;
 
     return Container(
       height: 400.0,
@@ -27,6 +28,11 @@ class PreviewBox extends StatelessWidget {
       child: Container(
         width: state.size,
         height: state.size,
+        child: Icon(
+          Icons.star,
+          size: iconSize,
+          color: Colors.amber,
+        ),
         transformAlignment: Alignment.center,
         decoration: BoxDecoration(
           color: state.color,
