@@ -14,6 +14,7 @@ class App extends StatelessWidget {
           primarySwatch: Colors.blue,
           textTheme: GoogleFonts.zcoolXiaoWeiTextTheme(),
         ),
+        // locale: AppLocalizations.supportedLocales.last,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         home: const HomePage(),
