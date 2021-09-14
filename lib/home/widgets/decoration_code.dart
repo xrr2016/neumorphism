@@ -18,8 +18,6 @@ class DecorationCode extends StatelessWidget {
       ),
     );
 
-    debugPrint(theme.toString());
-
     void _copyCode() async {
       try {
         await Clipboard.setData(ClipboardData(text: state.code));
@@ -41,33 +39,36 @@ class DecorationCode extends StatelessWidget {
     }
 
     return LayoutBuilder(builder: (context, BoxConstraints constraints) {
-      return Container(
+      return SizedBox(
         width: 400.0,
         height: constraints.maxHeight,
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              SizedBox(height: 20.0),
-              Container(
+              const SizedBox(height: 20.0),
+              SizedBox(
                 width: constraints.maxWidth,
                 child: HighlightView(
                   state.code,
                   theme: theme,
                   language: 'dart',
-                  padding: EdgeInsets.all(12.0),
-                  textStyle: TextStyle(fontSize: 12),
+                  padding: const EdgeInsets.all(12.0),
+                  textStyle: const TextStyle(fontSize: 12),
                 ),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Container(
                 height: 60.0,
                 width: constraints.maxWidth,
                 color: Colors.amber,
                 child: OutlinedButton.icon(
                   onPressed: _copyCode,
-                  icon: Icon(Icons.copy, color: Colors.white),
-                  label: Text('Copy', style: TextStyle(color: Colors.white)),
+                  icon: const Icon(Icons.copy, color: Colors.white),
+                  label: const Text(
+                    'Copy',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ],

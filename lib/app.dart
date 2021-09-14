@@ -12,8 +12,11 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          textTheme: GoogleFonts.zcoolXiaoWeiTextTheme(),
         ),
-        home: HomePage(),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: const HomePage(),
       ),
     );
   }

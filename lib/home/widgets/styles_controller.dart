@@ -44,7 +44,7 @@ class _StylesControllerState extends State<StylesController> {
           content: Container(
             width: MediaQuery.of(context).size.width * 0.8,
             height: MediaQuery.of(context).size.width * 0.8,
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: GridView.count(
               crossAxisSpacing: 10.0,
               mainAxisSpacing: 10.0,
@@ -68,7 +68,7 @@ class _StylesControllerState extends State<StylesController> {
     return ListTile(
       leading: Text(
         leading,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       ),
       title: Slider(
         min: min,
@@ -82,7 +82,7 @@ class _StylesControllerState extends State<StylesController> {
       ),
       trailing: Text(
         trailing,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       ),
     );
   }
@@ -98,12 +98,8 @@ class _StylesControllerState extends State<StylesController> {
             children: [
               ListTile(
                 title: Text(
-                  'Primary Color',
-                  style: TextStyle(color: Colors.white),
-                ),
-                subtitle: Text(
-                  'Choose primary color',
-                  style: TextStyle(color: Colors.white54, fontSize: 12.0),
+                  AppLocalizations.of(context)!.primary,
+                  style: const TextStyle(color: Colors.white),
                 ),
                 trailing: GestureDetector(
                   onTap: () {
@@ -124,7 +120,7 @@ class _StylesControllerState extends State<StylesController> {
                 ),
               ),
               _buildListTile(
-                'Size',
+                AppLocalizations.of(context)!.size,
                 100.0,
                 300.0,
                 state.size,
@@ -132,7 +128,7 @@ class _StylesControllerState extends State<StylesController> {
                 provider.changeSize,
               ),
               _buildListTile(
-                'Blur',
+                AppLocalizations.of(context)!.blur,
                 0.0,
                 100.0,
                 state.blur,
@@ -140,7 +136,7 @@ class _StylesControllerState extends State<StylesController> {
                 provider.changeBlur,
               ),
               _buildListTile(
-                'Radius',
+                AppLocalizations.of(context)!.radius,
                 0.0,
                 200.0,
                 state.radius,
@@ -148,7 +144,7 @@ class _StylesControllerState extends State<StylesController> {
                 provider.changeRadius,
               ),
               _buildListTile(
-                'Distance',
+                AppLocalizations.of(context)!.distance,
                 5.0,
                 50.0,
                 state.distance,
@@ -156,7 +152,7 @@ class _StylesControllerState extends State<StylesController> {
                 provider.changeDistance,
               ),
               _buildListTile(
-                'Intensity',
+                AppLocalizations.of(context)!.intensity,
                 0.1,
                 0.6,
                 state.intensity,
