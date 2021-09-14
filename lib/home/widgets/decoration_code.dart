@@ -1,41 +1,38 @@
-import 'package:flutter/material.dart';
-
 import '../../exports.dart';
 
 class DecorationCode extends StatelessWidget {
+  const DecorationCode({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     late final AppStateProviderState provider = AppStateProvider.of(context);
     late final AppState state = provider.state;
 
+    Map<String, TextStyle> theme = {};
+    theme.addAll(atomOneDarkTheme);
+
+    theme.update(
+      'root',
+      (value) => value.copyWith(
+        backgroundColor: state.color,
+      ),
+    );
+
+    debugPrint(theme.toString());
+
     void _copyCode() async {
       try {
         await Clipboard.setData(ClipboardData(text: state.code));
 
-        ScaffoldMessenger.of(context).showMaterialBanner(
-          MaterialBanner(
-            content: Text('Copyed'),
-            leading: Icon(
-              Icons.done,
-              color: Colors.white,
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Copyed.'),
+            action: SnackBarAction(
+              label: 'OK',
+              onPressed: () {
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              },
             ),
-            backgroundColor: state.color,
-            contentTextStyle: TextStyle(
-              color: Colors.white,
-            ),
-            actions: <Widget>[
-              TextButton(
-                child: Text(
-                  'OK',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                onPressed: () {
-                  ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
-                },
-              ),
-            ],
           ),
         );
       } catch (e) {
@@ -56,12 +53,10 @@ class DecorationCode extends StatelessWidget {
                 width: constraints.maxWidth,
                 child: HighlightView(
                   state.code,
+                  theme: theme,
                   language: 'dart',
-                  theme: githubTheme,
                   padding: EdgeInsets.all(12.0),
-                  textStyle: TextStyle(
-                    fontSize: 14,
-                  ),
+                  textStyle: TextStyle(fontSize: 12),
                 ),
               ),
               SizedBox(height: 20.0),

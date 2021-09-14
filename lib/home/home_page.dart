@@ -4,6 +4,8 @@ import './widgets/preview_box.dart';
 import './widgets/decoration_code.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -19,7 +21,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.gite),
+            icon: Icon(Icons.language_outlined),
           )
         ],
         backgroundColor: state.color,
