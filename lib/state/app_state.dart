@@ -1,10 +1,10 @@
 import '../exports.dart';
 
 enum Direction {
-  top,
-  bottom,
-  left,
-  right,
+  topLeft,
+  topRight,
+  bottomLeft,
+  bottomRight,
 }
 
 class AppState {
@@ -14,7 +14,7 @@ class AppState {
   double distance;
   double intensity;
   double blur;
-  Direction shape;
+  Direction direction;
   String code;
 
   AppState({
@@ -24,7 +24,7 @@ class AppState {
     this.distance = 25,
     this.intensity = 0.3,
     this.blur = 60.0,
-    this.shape = Direction.top,
+    this.direction = Direction.topLeft,
     this.code = '',
   });
 }

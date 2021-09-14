@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import '../../exports.dart';
 
 // gradient: RadialGradient(
@@ -21,44 +23,144 @@ class PreviewBox extends StatelessWidget {
     final Color lightColor = colorLuminance(colorString, lum: -state.intensity);
     final iconSize = state.size / 3;
 
-    return Container(
-      height: 400.0,
-      alignment: Alignment.center,
-      color: state.color,
-      child: Container(
-        width: state.size,
-        height: state.size,
-        child: Icon(
-          Icons.star,
-          size: iconSize,
-          color: Colors.amber,
-        ),
-        transformAlignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: state.color,
-          borderRadius: BorderRadius.circular(state.radius),
-          // image: const DecorationImage(
-          //   // fit: BoxFit.cover,
-          //   scale: 3.0,
-          //   image: AssetImage('assets/images/moon.jpg'),
-          //   alignment: Alignment.center,
-          // ),
-          boxShadow: [
-            BoxShadow(
-              color: darkColor,
-              offset: Offset(-state.distance, -state.distance),
-              blurRadius: state.blur,
-              spreadRadius: 0.0,
+    Offset darkOffset = Offset(state.distance, state.distance);
+    Offset lightOffset = Offset(-state.distance, -state.distance);
+
+    switch (state.direction) {
+      case Direction.topLeft:
+        darkOffset = Offset(-state.distance, -state.distance);
+        lightOffset = Offset(state.distance, state.distance);
+        break;
+      case Direction.topRight:
+        darkOffset = Offset(state.distance, -state.distance);
+        lightOffset = Offset(-state.distance, state.distance);
+        break;
+      case Direction.bottomLeft:
+        darkOffset = Offset(-state.distance, state.distance);
+        lightOffset = Offset(state.distance, -state.distance);
+        break;
+      case Direction.bottomRight:
+        darkOffset = Offset(state.distance, state.distance);
+        lightOffset = Offset(-state.distance, -state.distance);
+        break;
+      default:
+    }
+
+    return LayoutBuilder(builder: (context, BoxConstraints constraints) {
+      final double pos = constraints.maxWidth / 4;
+
+      return Stack(
+        children: [
+          Container(
+            height: 400.0,
+            alignment: Alignment.center,
+            color: state.color,
+            child: Container(
+              width: state.size,
+              height: state.size,
+              child: Icon(
+                Icons.star,
+                size: iconSize,
+                color: Colors.amber,
+              ),
+              transformAlignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: state.color,
+                borderRadius: BorderRadius.circular(state.radius),
+                // image: const DecorationImage(
+                //   // fit: BoxFit.cover,
+                //   scale: 3.0,
+                //   image: AssetImage('assets/images/moon.jpg'),
+                //   alignment: Alignment.center,
+                // ),
+                boxShadow: [
+                  BoxShadow(
+                    color: lightColor,
+                    offset: lightOffset,
+                    blurRadius: state.blur,
+                    spreadRadius: 0.0,
+                  ),
+                  BoxShadow(
+                    color: darkColor,
+                    offset: darkOffset,
+                    blurRadius: state.blur,
+                    spreadRadius: 0.0,
+                  ),
+                ],
+              ),
             ),
-            BoxShadow(
-              color: lightColor,
-              offset: Offset(state.distance, state.distance),
-              blurRadius: state.blur,
-              spreadRadius: 0.0,
+          ),
+          Positioned(
+            top: 25.0,
+            left: pos,
+            child: RotatedBox(
+              quarterTurns: 5,
+              child: IconButton(
+                onPressed: () {
+                  provider.changeDirection(Direction.topLeft);
+                },
+                icon: Icon(
+                  Icons.square_foot_sharp,
+                  color: state.direction == Direction.topLeft
+                      ? Colors.amber
+                      : Colors.white,
+                ),
+              ),
             ),
-          ],
-        ),
-      ),
-    );
+          ),
+          Positioned(
+            top: 25.0,
+            right: pos,
+            child: RotatedBox(
+              quarterTurns: 2,
+              child: IconButton(
+                onPressed: () {
+                  provider.changeDirection(Direction.topRight);
+                },
+                icon: Icon(
+                  Icons.square_foot_sharp,
+                  color: state.direction == Direction.topRight
+                      ? Colors.amber
+                      : Colors.white,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 10.0,
+            right: pos,
+            child: RotatedBox(
+              quarterTurns: 3,
+              child: IconButton(
+                onPressed: () {
+                  provider.changeDirection(Direction.bottomLeft);
+                },
+                icon: Icon(
+                  Icons.square_foot_sharp,
+                  color: state.direction == Direction.bottomLeft
+                      ? Colors.amber
+                      : Colors.white,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 10.0,
+            left: pos,
+            child: IconButton(
+              onPressed: () {
+                provider.changeDirection(Direction.bottomRight);
+              },
+              icon: Icon(
+                Icons.square_foot_outlined,
+                color: state.direction == Direction.bottomRight
+                    ? Colors.amber
+                    : Colors.white,
+              ),
+            ),
+          ),
+        ],
+      );
+    });
   }
 }

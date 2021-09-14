@@ -63,12 +63,41 @@ class AppStateProviderState extends State<AppStateProvider> {
     setState(() {});
   }
 
+  changeDirection(Direction direction) {
+    state.direction = direction;
+    setCode();
+    setState(() {});
+  }
+
   setCode() {
     final String colorString = state.color.value.toRadixString(16);
     final Color darkColor = colorLuminance(colorString, lum: state.intensity);
     final Color lightColor = colorLuminance(colorString, lum: -state.intensity);
     final Color baseColor =
         Color(int.parse('0x${state.color.value.toRadixString(16)}'));
+
+    Offset darkOffset = Offset(state.distance, state.distance);
+    Offset lightOffset = Offset(-state.distance, -state.distance);
+
+    switch (state.direction) {
+      case Direction.topLeft:
+        darkOffset = Offset(state.distance, state.distance);
+        lightOffset = Offset(-state.distance, -state.distance);
+        break;
+      case Direction.topRight:
+        darkOffset = Offset(-state.distance, state.distance);
+        lightOffset = Offset(state.distance, -state.distance);
+        break;
+      case Direction.bottomLeft:
+        darkOffset = Offset(state.distance, -state.distance);
+        lightOffset = Offset(-state.distance, state.distance);
+        break;
+      case Direction.bottomRight:
+        darkOffset = Offset(-state.distance, -state.distance);
+        lightOffset = Offset(state.distance, state.distance);
+        break;
+      default:
+    }
 
     String code = '''
   Container(
@@ -93,19 +122,13 @@ class AppStateProviderState extends State<AppStateProvider> {
           boxShadow: [
             BoxShadow(
               color: $darkColor,
-              offset: Offset(
-                ${-state.distance.round()},
-                ${-state.distance.round()},
-              ),
+              offset: $darkOffset,
               blurRadius: ${state.blur.round()},
               spreadRadius: 0.0,
             ),
             BoxShadow(
               color: $lightColor,
-              offset: Offset(
-                ${state.distance.round()},
-                ${state.distance.round()},
-              ),
+              offset: $lightOffset,
               blurRadius: ${state.blur.round()},
               spreadRadius: 0.0,
             ),

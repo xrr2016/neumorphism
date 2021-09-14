@@ -58,6 +58,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: const [
                     PreviewBox(),
+                    SizedBox(height: 20.0),
                     StylesController(),
                   ],
                 ),
