@@ -18,15 +18,16 @@ class DecorationCode extends StatelessWidget {
       ),
     );
 
-    return SizedBox(
+    return Container(
       width: 480.0,
-      height: double.infinity,
+      color: state.color,
+      constraints: const BoxConstraints.tightForFinite(),
       child: SingleChildScrollView(
         child: HighlightView(
           state.code,
           theme: theme,
-          padding: const EdgeInsets.only(top: 20.0),
           language: 'dart',
+          padding: const EdgeInsets.only(top: 20.0),
           textStyle: GoogleFonts.robotoMono(
             color: Colors.white,
             fontSize: 13.0,

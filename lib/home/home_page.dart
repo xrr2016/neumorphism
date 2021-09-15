@@ -77,9 +77,10 @@ class _HomePageState extends State<HomePage> {
       ),
       // drawer: Drawer(),
       body: SafeArea(
-        child: Container(
-          color: state.color,
+        child: DecoratedBox(
+          decoration: BoxDecoration(color: state.color),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
                 child: Column(
@@ -92,9 +93,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              const VerticalDivider(
-                thickness: 2.0,
-              ),
+              const VerticalDivider(thickness: 2.0),
               const DecorationCode(),
             ],
           ),

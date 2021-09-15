@@ -23,6 +23,9 @@ export './state/app_state_provider.dart';
 
 const String githubRepoUrl = 'https://github.com/xrr2016/neumorphism';
 
+// https://dribbble.com/search/Glassmorphism
+// https://dribbble.com/tags/neumorphism
+
 final List<Color> colors = [
   const Color(0xff333333),
   const Color(0xff4caf50),
