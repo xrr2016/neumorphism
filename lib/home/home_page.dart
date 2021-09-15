@@ -92,7 +92,9 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              const VerticalDivider(),
+              const VerticalDivider(
+                thickness: 2.0,
+              ),
               const DecorationCode(),
             ],
           ),

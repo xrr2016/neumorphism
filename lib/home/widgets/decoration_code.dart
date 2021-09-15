@@ -18,23 +18,19 @@ class DecorationCode extends StatelessWidget {
       ),
     );
 
-    return LayoutBuilder(builder: (context, BoxConstraints constraints) {
-      return Container(
-        width: 500.0,
-        margin: const EdgeInsets.only(top: 20.0),
-        height: constraints.maxHeight,
-        child: SingleChildScrollView(
-          child: HighlightView(
-            state.code,
-            theme: theme,
-            language: 'dart',
-            textStyle: GoogleFonts.robotoMono(
-              color: Colors.white,
-              fontSize: 13.0,
-            ),
+    return SizedBox(
+      width: 480.0,
+      child: SingleChildScrollView(
+        child: HighlightView(
+          state.code,
+          theme: theme,
+          language: 'dart',
+          textStyle: GoogleFonts.robotoMono(
+            color: Colors.white,
+            fontSize: 13.0,
           ),
         ),
-      );
-    });
+      ),
+    );
   }
 }
