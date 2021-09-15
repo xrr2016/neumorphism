@@ -1,6 +1,9 @@
 {
   "color": "颜色",
   "shape": "形状",
+  "flat": "扁平",
+  "convex": "凸形",
+  "concave": "凹形",
   "size": "尺寸",
   "blur": "模糊",
   "radius": "圆角",

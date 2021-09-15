@@ -91,15 +91,18 @@ class _StylesControllerState extends State<StylesController> {
   Widget _buildTypeRadio(CurveType type, String text) {
     return Row(
       children: [
-        Radio<CurveType>(
-          value: type,
-          groupValue: state.type,
-          activeColor: Colors.amber,
-          onChanged: (CurveType? value) {
-            setState(() {
-              provider.changeType(type);
-            });
-          },
+        Theme(
+          data: ThemeData(unselectedWidgetColor: Colors.white),
+          child: Radio<CurveType>(
+            value: type,
+            groupValue: state.type,
+            activeColor: Colors.amber,
+            onChanged: (CurveType? value) {
+              setState(() {
+                provider.changeType(type);
+              });
+            },
+          ),
         ),
         Text(
           text,
@@ -128,8 +131,8 @@ class _StylesControllerState extends State<StylesController> {
                     _openDialog();
                   },
                   child: Container(
-                    width: 30.0,
-                    height: 30.0,
+                    width: 24.0,
+                    height: 24.0,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: state.color,
@@ -151,9 +154,18 @@ class _StylesControllerState extends State<StylesController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _buildTypeRadio(CurveType.flat, 'Flat'),
-                      _buildTypeRadio(CurveType.concave, 'Concave'),
-                      _buildTypeRadio(CurveType.convex, 'Convex'),
+                      _buildTypeRadio(
+                        CurveType.flat,
+                        AppLocalizations.of(context)!.flat,
+                      ),
+                      _buildTypeRadio(
+                        CurveType.concave,
+                        AppLocalizations.of(context)!.concave,
+                      ),
+                      _buildTypeRadio(
+                        CurveType.convex,
+                        AppLocalizations.of(context)!.convex,
+                      ),
                     ],
                   ),
                 ),

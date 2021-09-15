@@ -1,6 +1,9 @@
 {
   "color": "Color",
   "shape": "Shape",
+  "flat": "Flat",
+  "convex": "Convex",
+  "concave": "Concave",
   "size": "Size",
   "blur": "Blur",
   "radius": "Radius",

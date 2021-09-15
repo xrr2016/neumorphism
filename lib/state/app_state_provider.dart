@@ -79,8 +79,6 @@ class AppStateProviderState extends State<AppStateProvider> {
     final String colorString = state.color.value.toRadixString(16);
     final Color darkColor = colorLuminance(colorString, lum: state.intensity);
     final Color lightColor = colorLuminance(colorString, lum: -state.intensity);
-    final Color baseColor =
-        Color(int.parse('0x${state.color.value.toRadixString(16)}'));
     Offset darkOffset = Offset(state.distance, state.distance);
     Offset lightOffset = Offset(-state.distance, -state.distance);
 
@@ -104,14 +102,29 @@ class AppStateProviderState extends State<AppStateProvider> {
       default:
     }
 
+    List<Color> gradientColors = [];
+    final int depth = (state.intensity * 100).toInt();
+
+    switch (state.type) {
+      case CurveType.flat:
+        gradientColors = getFlatGradients(state.color, depth);
+        break;
+      case CurveType.concave:
+        gradientColors = getConcaveGradients(state.color, depth);
+        break;
+      case CurveType.convex:
+        gradientColors = getConvexGradients(state.color, depth);
+        break;
+    }
+
     String code = '''
   Container(
     width: 500.0,
     height: 500.0,
-    color: $baseColor,
+    color: ${state.color},
     alignment: Alignment.center,
     child: Container(
-      color: $baseColor,
+      color: ${state.color},
       child: Container(
         width: ${state.size.round()},
         height: ${state.size.round()},
@@ -124,6 +137,11 @@ class AppStateProviderState extends State<AppStateProvider> {
         decoration: BoxDecoration(
           color: state.color,
           borderRadius: BorderRadius.circular(${state.radius.round()}),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: $gradientColors,
+          ),
           boxShadow: [
             BoxShadow(
               color: $darkColor,

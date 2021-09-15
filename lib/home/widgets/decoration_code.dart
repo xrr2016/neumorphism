@@ -21,7 +21,7 @@ class DecorationCode extends StatelessWidget {
     return LayoutBuilder(builder: (context, BoxConstraints constraints) {
       return Container(
         width: 500.0,
-        margin: const EdgeInsets.only(top: 50.0),
+        margin: const EdgeInsets.only(top: 20.0),
         height: constraints.maxHeight,
         child: SingleChildScrollView(
           child: HighlightView(
