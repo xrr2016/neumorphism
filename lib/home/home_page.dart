@@ -54,6 +54,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: _copyCode,
             icon: const Icon(Icons.copy, color: Colors.white),
           ),
+          const SizedBox(width: 10.0),
           InkWell(
             onTap: _launchURL,
             child: Padding(
@@ -67,11 +68,12 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+          const SizedBox(width: 10.0),
         ],
         backgroundColor: state.color,
         title: const Text('Neumorphism'),
         centerTitle: false,
-        // elevation: 0.0,
+        elevation: 2.0,
       ),
       // drawer: Drawer(),
       body: SafeArea(
@@ -90,6 +92,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
+              const VerticalDivider(),
               const DecorationCode(),
             ],
           ),
