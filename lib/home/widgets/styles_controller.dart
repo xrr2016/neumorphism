@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import '../../exports.dart';
 
 class StylesController extends StatefulWidget {
@@ -57,7 +59,7 @@ class _StylesControllerState extends State<StylesController> {
     );
   }
 
-  ListTile _buildListTile(
+  Widget _buildListTile(
     String leading,
     double min,
     double max,
@@ -83,6 +85,27 @@ class _StylesControllerState extends State<StylesController> {
         trailing,
         style: const TextStyle(color: Colors.white),
       ),
+    );
+  }
+
+  Widget _buildTypeRadio(CurveType type, String text) {
+    return Row(
+      children: [
+        Radio<CurveType>(
+          value: type,
+          groupValue: state.type,
+          activeColor: Colors.amber,
+          onChanged: (CurveType? value) {
+            setState(() {
+              provider.changeType(type);
+            });
+          },
+        ),
+        Text(
+          text,
+          style: const TextStyle(color: Colors.white, fontSize: 14.0),
+        ),
+      ],
     );
   }
 
@@ -118,27 +141,23 @@ class _StylesControllerState extends State<StylesController> {
                   ),
                 ),
               ),
-              // ListTile(
-              //   leading: Text(
-              //     AppLocalizations.of(context)!.shape,
-              //     style: const TextStyle(color: Colors.white),
-              //   ),
-              //   title: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //     children: [
-              //       // Container(
-              //       //   width: 200.0,
-              //       //   height: 50.0,
-              //       //   color: Colors.amber,
-              //       // ),
-              //       // Container(
-              //       //   width: 200.0,
-              //       //   height: 50.0,
-              //       //   color: Colors.amber,
-              //       // ),
-              //     ],
-              //   ),
-              // ),
+              ListTile(
+                leading: Text(
+                  AppLocalizations.of(context)!.shape,
+                  style: const TextStyle(color: Colors.white),
+                ),
+                title: Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildTypeRadio(CurveType.flat, 'Flat'),
+                      _buildTypeRadio(CurveType.concave, 'Concave'),
+                      _buildTypeRadio(CurveType.convex, 'Convex'),
+                    ],
+                  ),
+                ),
+              ),
               _buildListTile(
                 AppLocalizations.of(context)!.size,
                 100.0,

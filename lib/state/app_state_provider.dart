@@ -69,13 +69,18 @@ class AppStateProviderState extends State<AppStateProvider> {
     setState(() {});
   }
 
+  changeType(CurveType type) {
+    state.type = type;
+    setCode();
+    setState(() {});
+  }
+
   setCode() {
     final String colorString = state.color.value.toRadixString(16);
     final Color darkColor = colorLuminance(colorString, lum: state.intensity);
     final Color lightColor = colorLuminance(colorString, lum: -state.intensity);
     final Color baseColor =
         Color(int.parse('0x${state.color.value.toRadixString(16)}'));
-
     Offset darkOffset = Offset(state.distance, state.distance);
     Offset lightOffset = Offset(-state.distance, -state.distance);
 

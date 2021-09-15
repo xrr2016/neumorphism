@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: false,
         // elevation: 0.0,
       ),
-      drawer: Drawer(),
+      // drawer: Drawer(),
       body: SafeArea(
         child: Container(
           color: state.color,

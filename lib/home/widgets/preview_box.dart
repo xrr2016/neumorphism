@@ -37,6 +37,21 @@ class PreviewBox extends StatelessWidget {
       default:
     }
 
+    List<Color> gradientColors = [];
+    final int depth = (state.intensity * 100).toInt();
+
+    switch (state.type) {
+      case CurveType.flat:
+        gradientColors = getFlatGradients(state.color, depth);
+        break;
+      case CurveType.concave:
+        gradientColors = getConcaveGradients(state.color, depth);
+        break;
+      case CurveType.convex:
+        gradientColors = getConvexGradients(state.color, depth);
+        break;
+    }
+
     return LayoutBuilder(builder: (context, BoxConstraints constraints) {
       final double pos = constraints.maxWidth / 4;
 
@@ -61,7 +76,7 @@ class PreviewBox extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: getConcaveGradients(state.color, state.intensity),
+                  colors: gradientColors,
                 ),
                 boxShadow: [
                   BoxShadow(

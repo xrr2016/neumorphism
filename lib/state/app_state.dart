@@ -2,7 +2,7 @@ import '../exports.dart';
 
 enum Direction { topLeft, topRight, bottomLeft, bottomRight }
 
-enum CurveType { concave, convex, none }
+enum CurveType { concave, convex, flat }
 
 class AppState {
   Color color;
@@ -12,6 +12,7 @@ class AppState {
   double intensity;
   double blur;
   Direction direction;
+  CurveType type;
   String code;
 
   AppState({
@@ -22,6 +23,7 @@ class AppState {
     this.intensity = 0.3,
     this.blur = 60.0,
     this.direction = Direction.topLeft,
+    this.type = CurveType.flat,
     this.code = '',
   });
 }
