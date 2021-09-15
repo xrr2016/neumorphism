@@ -4,6 +4,8 @@ import './widgets/preview_box.dart';
 import './widgets/decoration_code.dart';
 
 class HomePage extends StatefulWidget {
+  static String routeName = 'home_page';
+
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -71,6 +73,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: false,
         // elevation: 0.0,
       ),
+      drawer: Drawer(),
       body: SafeArea(
         child: Container(
           color: state.color,

@@ -74,7 +74,6 @@ class _StylesControllerState extends State<StylesController> {
         min: min,
         max: max,
         value: value,
-        // divisions: 1,
         label: value.toString(),
         activeColor: Colors.amber,
         inactiveColor: Colors.white70,

@@ -2,15 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../exports.dart';
 
-// gradient: RadialGradient(
-//   colors: [
-//     Color(0xff23a450).withOpacity(1.0),
-//     Color(0xff23a450).withOpacity(1.0)
-//   ],
-//   focal: Alignment.bottomLeft,
-//   center: Alignment.bottomRight,
-//   radius: 0.0,
-// ),
 class PreviewBox extends StatelessWidget {
   const PreviewBox({Key? key}) : super(key: key);
 
@@ -67,12 +58,11 @@ class PreviewBox extends StatelessWidget {
               decoration: BoxDecoration(
                 color: state.color,
                 borderRadius: BorderRadius.circular(state.radius),
-                // image: const DecorationImage(
-                //   // fit: BoxFit.cover,
-                //   scale: 3.0,
-                //   image: AssetImage('assets/images/moon.jpg'),
-                //   alignment: Alignment.center,
-                // ),
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: getConcaveGradients(state.color, state.intensity),
+                ),
                 boxShadow: [
                   BoxShadow(
                     color: lightColor,

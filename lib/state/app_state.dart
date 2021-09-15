@@ -1,11 +1,8 @@
 import '../exports.dart';
 
-enum Direction {
-  topLeft,
-  topRight,
-  bottomLeft,
-  bottomRight,
-}
+enum Direction { topLeft, topRight, bottomLeft, bottomRight }
+
+enum CurveType { concave, convex, none }
 
 class AppState {
   Color color;
