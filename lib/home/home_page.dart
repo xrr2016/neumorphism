@@ -22,19 +22,44 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  void _copyCode() async {
+    try {
+      await Clipboard.setData(ClipboardData(text: state.code));
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.copied),
+          action: SnackBarAction(
+            label: 'OK',
+            textColor: Colors.amber,
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            },
+          ),
+        ),
+      );
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: [
+          IconButton(
+            onPressed: _copyCode,
+            icon: const Icon(Icons.copy, color: Colors.white),
+          ),
           InkWell(
             onTap: _launchURL,
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(8.0),
               child: SvgPicture.asset(
                 'assets/images/github.svg',
-                width: 22.0,
-                height: 22.0,
+                width: 24.0,
+                height: 24.0,
                 color: Colors.white,
                 semanticsLabel: 'Github',
               ),

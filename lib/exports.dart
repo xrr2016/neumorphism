@@ -28,7 +28,6 @@ final List<Color> colors = [
   const Color(0xff6F1E51),
   const Color(0xffED4C67),
   const Color(0xffC4E538),
-  const Color(0xffEA2027),
   const Color(0xff9980FA),
   const Color(0xffE96831),
   const Color(0xffD1667C),
