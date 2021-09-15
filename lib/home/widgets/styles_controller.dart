@@ -34,13 +34,13 @@ class _StylesControllerState extends State<StylesController> {
     return items.toList();
   }
 
-  void _openDialog(String title) {
+  void _openDialog() {
     showDialog(
       context: context,
       builder: (_) {
         return AlertDialog(
           contentPadding: const EdgeInsets.all(10.0),
-          title: Text(title),
+          title: Text(AppLocalizations.of(context)!.color),
           content: Container(
             width: MediaQuery.of(context).size.width * 0.5,
             height: MediaQuery.of(context).size.height * 0.5,
@@ -97,13 +97,13 @@ class _StylesControllerState extends State<StylesController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ListTile(
-                title: Text(
-                  AppLocalizations.of(context)!.primary,
+                leading: Text(
+                  AppLocalizations.of(context)!.color,
                   style: const TextStyle(color: Colors.white),
                 ),
                 trailing: InkWell(
                   onTap: () {
-                    _openDialog(AppLocalizations.of(context)!.primary);
+                    _openDialog();
                   },
                   child: Container(
                     width: 30.0,
@@ -119,6 +119,27 @@ class _StylesControllerState extends State<StylesController> {
                   ),
                 ),
               ),
+              // ListTile(
+              //   leading: Text(
+              //     AppLocalizations.of(context)!.shape,
+              //     style: const TextStyle(color: Colors.white),
+              //   ),
+              //   title: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       // Container(
+              //       //   width: 200.0,
+              //       //   height: 50.0,
+              //       //   color: Colors.amber,
+              //       // ),
+              //       // Container(
+              //       //   width: 200.0,
+              //       //   height: 50.0,
+              //       //   color: Colors.amber,
+              //       // ),
+              //     ],
+              //   ),
+              // ),
               _buildListTile(
                 AppLocalizations.of(context)!.size,
                 100.0,
@@ -138,7 +159,7 @@ class _StylesControllerState extends State<StylesController> {
               _buildListTile(
                 AppLocalizations.of(context)!.radius,
                 0.0,
-                200.0,
+                150.0,
                 state.radius,
                 state.radius.round().toString(),
                 provider.changeRadius,

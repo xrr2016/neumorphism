@@ -5,13 +5,15 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppState state = AppState();
+
     return AppStateProvider(
-      state: AppState(),
+      state: state,
       child: MaterialApp(
         title: 'Neumorphism',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          // primarySwatch: Colors.amber,
           textTheme: GoogleFonts.latoTextTheme(),
         ),
         // locale: AppLocalizations.supportedLocales.last,

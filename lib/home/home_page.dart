@@ -15,11 +15,10 @@ class _HomePageState extends State<HomePage> {
   late final AppState state = provider.state;
 
   void _launchURL() async {
-    const url = 'https://github.com/xrr2016/neumorphism';
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunch(githubRepoUrl)) {
+      await launch(githubRepoUrl);
     } else {
-      throw 'Could not launch $url';
+      throw 'Could not launch $githubRepoUrl';
     }
   }
 

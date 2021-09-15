@@ -18,7 +18,9 @@ export './home/home_page.dart';
 export './state/app_state.dart';
 export './state/app_state_provider.dart';
 
-List<Color> colors = [
+const String githubRepoUrl = 'https://github.com/xrr2016/neumorphism';
+
+final List<Color> colors = [
   const Color(0xff333333),
   const Color(0xff4caf50),
   const Color(0xff9c27b0),

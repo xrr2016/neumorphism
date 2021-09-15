@@ -1,5 +1,6 @@
 {
-  "primary": "Primary Color",
+  "color": "Color",
+  "shape": "Shape",
   "size": "Size",
   "blur": "Blur",
   "radius": "Radius",
