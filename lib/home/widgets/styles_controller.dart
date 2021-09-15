@@ -204,10 +204,10 @@ class _StylesControllerState extends State<StylesController> {
               ),
               _buildListTile(
                 AppLocalizations.of(context)!.intensity,
-                0.1,
-                0.6,
+                10.0,
+                50.0,
                 state.intensity,
-                state.intensity.toStringAsFixed(1),
+                state.intensity.round().toString(),
                 provider.changeIntensity,
               ),
             ],

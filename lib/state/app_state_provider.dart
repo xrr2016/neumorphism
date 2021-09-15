@@ -76,34 +76,34 @@ class AppStateProviderState extends State<AppStateProvider> {
   }
 
   setCode() {
-    final String colorString = state.color.value.toRadixString(16);
-    final Color darkColor = colorLuminance(colorString, lum: state.intensity);
-    final Color lightColor = colorLuminance(colorString, lum: -state.intensity);
+    final int depth = state.intensity.toInt();
+    final Color darkColor = getAdjustColor(state.color, depth);
+    final Color lightColor = getAdjustColor(state.color, -depth);
+
     Offset darkOffset = Offset(state.distance, state.distance);
     Offset lightOffset = Offset(-state.distance, -state.distance);
 
     switch (state.direction) {
       case Direction.topLeft:
-        darkOffset = Offset(state.distance, state.distance);
-        lightOffset = Offset(-state.distance, -state.distance);
+        darkOffset = Offset(-state.distance, -state.distance);
+        lightOffset = Offset(state.distance, state.distance);
         break;
       case Direction.topRight:
-        darkOffset = Offset(-state.distance, state.distance);
-        lightOffset = Offset(state.distance, -state.distance);
-        break;
-      case Direction.bottomLeft:
         darkOffset = Offset(state.distance, -state.distance);
         lightOffset = Offset(-state.distance, state.distance);
         break;
+      case Direction.bottomLeft:
+        darkOffset = Offset(state.distance, state.distance);
+        lightOffset = Offset(-state.distance, -state.distance);
+        break;
       case Direction.bottomRight:
-        darkOffset = Offset(-state.distance, -state.distance);
-        lightOffset = Offset(state.distance, state.distance);
+        darkOffset = Offset(-state.distance, state.distance);
+        lightOffset = Offset(state.distance, -state.distance);
         break;
       default:
     }
 
     List<Color> gradientColors = [];
-    final int depth = (state.intensity * 100).toInt();
 
     switch (state.type) {
       case CurveType.flat:
@@ -118,48 +118,51 @@ class AppStateProviderState extends State<AppStateProvider> {
     }
 
     String code = '''
-  Container(
-    width: 500.0,
-    height: 500.0,
-    color: ${state.color},
-    alignment: Alignment.center,
-    child: Container(
-      color: ${state.color},
-      child: Container(
-        width: ${state.size.round()},
-        height: ${state.size.round()},
-        child: Icon(
-          Icons.star,
-          size: ${(state.size / 3).round()},
-          color: Colors.amber,
-        ),
+      Container(
+        width: 500.0,
+        height: 500.0,
+        color: ${state.color},
+        alignment: Alignment.center,
         transformAlignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: state.color,
-          borderRadius: BorderRadius.circular(${state.radius.round()}),
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: $gradientColors,
+        child: Container(
+          color: ${state.color},
+          child: Container(
+            width: ${state.size.round()},
+            height: ${state.size.round()},
+            child: Icon(
+              Icons.star,
+              size: ${(state.size / 3).round()},
+              color: Colors.amber,
+            ),
+            decoration: BoxDecoration(
+              color: state.color,
+              borderRadius: BorderRadius.circular(${state.radius.round()}),
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  ${gradientColors.first},
+                  ${gradientColors.last},
+                ],
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: $darkColor,
+                  offset: $darkOffset,
+                  blurRadius: ${state.blur.round()},
+                  spreadRadius: 0.0,
+                ),
+                BoxShadow(
+                  color: $lightColor,
+                  offset: $lightOffset,
+                  blurRadius: ${state.blur.round()},
+                  spreadRadius: 0.0,
+                ),
+              ],
+            ),
           ),
-          boxShadow: [
-            BoxShadow(
-              color: $darkColor,
-              offset: $darkOffset,
-              blurRadius: ${state.blur.round()},
-              spreadRadius: 0.0,
-            ),
-            BoxShadow(
-              color: $lightColor,
-              offset: $lightOffset,
-              blurRadius: ${state.blur.round()},
-              spreadRadius: 0.0,
-            ),
-          ],
         ),
-      ),
-    ),
-  )
+      )
   ''';
     state.code = code;
     setState(() {});

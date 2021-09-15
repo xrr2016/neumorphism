@@ -9,10 +9,10 @@ class PreviewBox extends StatelessWidget {
   Widget build(BuildContext context) {
     late final AppStateProviderState provider = AppStateProvider.of(context);
     late final AppState state = provider.state;
-    late final String colorString = state.color.value.toRadixString(16);
-    final Color darkColor = colorLuminance(colorString, lum: state.intensity);
-    final Color lightColor = colorLuminance(colorString, lum: -state.intensity);
-    final iconSize = state.size / 3;
+    final int depth = state.intensity.toInt();
+    final Color darkColor = getAdjustColor(state.color, depth);
+    final Color lightColor = getAdjustColor(state.color, -depth);
+    final double iconSize = state.size / 3;
 
     Offset darkOffset = Offset(state.distance, state.distance);
     Offset lightOffset = Offset(-state.distance, -state.distance);
@@ -38,7 +38,6 @@ class PreviewBox extends StatelessWidget {
     }
 
     List<Color> gradientColors = [];
-    final int depth = (state.intensity * 100).toInt();
 
     switch (state.type) {
       case CurveType.flat:
@@ -51,6 +50,21 @@ class PreviewBox extends StatelessWidget {
         gradientColors = getConvexGradients(state.color, depth);
         break;
     }
+
+    List<BoxShadow> shadowList = [
+      BoxShadow(
+        color: lightColor,
+        offset: lightOffset,
+        blurRadius: state.blur,
+        spreadRadius: 0.0,
+      ),
+      BoxShadow(
+        color: darkColor,
+        offset: darkOffset,
+        blurRadius: state.blur,
+        spreadRadius: 0.0,
+      ),
+    ];
 
     return LayoutBuilder(builder: (context, BoxConstraints constraints) {
       final double pos = constraints.maxWidth / 4;
@@ -78,20 +92,7 @@ class PreviewBox extends StatelessWidget {
                   end: Alignment.bottomRight,
                   colors: gradientColors,
                 ),
-                boxShadow: [
-                  BoxShadow(
-                    color: lightColor,
-                    offset: lightOffset,
-                    blurRadius: state.blur,
-                    spreadRadius: 0.0,
-                  ),
-                  BoxShadow(
-                    color: darkColor,
-                    offset: darkOffset,
-                    blurRadius: state.blur,
-                    spreadRadius: 0.0,
-                  ),
-                ],
+                boxShadow: shadowList,
               ),
             ),
           ),
