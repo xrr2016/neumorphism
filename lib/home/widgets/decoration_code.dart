@@ -20,10 +20,12 @@ class DecorationCode extends StatelessWidget {
 
     return SizedBox(
       width: 480.0,
+      height: double.infinity,
       child: SingleChildScrollView(
         child: HighlightView(
           state.code,
           theme: theme,
+          padding: const EdgeInsets.only(top: 20.0),
           language: 'dart',
           textStyle: GoogleFonts.robotoMono(
             color: Colors.white,
