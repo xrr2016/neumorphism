@@ -26,11 +26,12 @@ class _CardPageState extends State<CardPage> {
       ),
     );
 
-    double _radius;
-    double _blur;
-    double _opacity;
     double _width;
     double _height;
+    double _blur;
+    double _radius;
+    double _opacity;
+    double _padding;
 
     return Scaffold(
       appBar: AppBar(
@@ -83,7 +84,7 @@ class _CardPageState extends State<CardPage> {
                   filter: ImageFilter.blur(
                     sigmaX: 30.0,
                     sigmaY: 30.0,
-                    tileMode: TileMode.repeated,
+                    tileMode: TileMode.clamp,
                   ),
                   child: Container(
                     width: 720.0,
@@ -96,60 +97,57 @@ class _CardPageState extends State<CardPage> {
                         color: Colors.white.withOpacity(0.2),
                       ),
                     ),
-                    // child: Padding(
-                    //   padding: const EdgeInsets.all(16.0),
-                    //   child: Column(
-                    //     children: [
-                    //       Row(
-                    //         mainAxisAlignment:
-                    //             MainAxisAlignment.spaceBetween,
-                    //         children: [
-                    //           Text(
-                    //             'Card',
-                    //             style: TextStyle(
-                    //               color: Colors.white.withOpacity(0.75),
-                    //             ),
-                    //           ),
-                    //           Icon(
-                    //             Icons.credit_card_sharp,
-                    //             color: Colors.white.withOpacity(0.75),
-                    //           )
-                    //         ],
-                    //       ),
-                    //       const Spacer(),
-                    //       Row(
-                    //         mainAxisAlignment:
-                    //             MainAxisAlignment.spaceBetween,
-                    //         children: [
-                    //           Text(
-                    //             'TL Templates',
-                    //             style: TextStyle(
-                    //               color: Colors.white.withOpacity(0.75),
-                    //             ),
-                    //           ),
-                    //           Text(
-                    //             '07/25',
-                    //             style: TextStyle(
-                    //               color: Colors.white.withOpacity(0.75),
-                    //             ),
-                    //           ),
-                    //         ],
-                    //       ),
-                    //       Row(
-                    //         mainAxisAlignment:
-                    //             MainAxisAlignment.spaceBetween,
-                    //         children: [
-                    //           Text(
-                    //             '5555 5555 5555 4444',
-                    //             style: TextStyle(
-                    //               color: Colors.white.withOpacity(0.75),
-                    //             ),
-                    //           ),
-                    //         ],
-                    //       )
-                    //     ],
-                    //   ),
-                    // ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Card',
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.75),
+                                ),
+                              ),
+                              Icon(
+                                Icons.credit_card_sharp,
+                                color: Colors.white.withOpacity(0.75),
+                              )
+                            ],
+                          ),
+                          const Spacer(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'TL Templates',
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.75),
+                                ),
+                              ),
+                              Text(
+                                '07/25',
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.75),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                '5555 5555 5555 4444',
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.75),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
