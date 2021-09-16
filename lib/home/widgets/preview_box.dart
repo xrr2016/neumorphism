@@ -79,7 +79,7 @@ class PreviewBox extends StatelessWidget {
               width: state.size,
               height: state.size,
               child: Icon(
-                Icons.star,
+                Icons.favorite,
                 size: iconSize,
                 color: Colors.amber,
               ),
