@@ -135,7 +135,7 @@ class AppStateProviderState extends State<AppStateProvider> {
               color: Colors.amber,
             ),
             decoration: BoxDecoration(
-              color: state.color,
+              color: ${state.color},
               borderRadius: BorderRadius.circular(${state.radius.round()}),
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
