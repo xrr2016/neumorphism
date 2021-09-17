@@ -35,6 +35,8 @@ dependencies:
   google_fonts: ^2.1.0
   flutter_svg: ^0.22.0
   url_launcher: ^6.0.10
+  image: ^3.0.4
+  screenshot: ^1.2.3
   # firebase_core: ^1.6.0
   # firebase_analytics: "^8.3.2"
 

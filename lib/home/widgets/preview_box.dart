@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '../../exports.dart';
 
 class PreviewBox extends StatelessWidget {
