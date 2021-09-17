@@ -81,6 +81,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 2.0,
       ),
       // drawer: Drawer(),
+      backgroundColor: state.color,
       body: SafeArea(
         child: DecoratedBox(
           decoration: BoxDecoration(color: state.color),
