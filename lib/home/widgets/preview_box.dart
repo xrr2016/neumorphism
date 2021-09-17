@@ -7,6 +7,7 @@ class PreviewBox extends StatelessWidget {
   Widget build(BuildContext context) {
     late final AppStateProviderState provider = AppStateProvider.of(context);
     late final AppState state = provider.state;
+
     final int depth = state.intensity.toInt();
     final Color darkColor = getAdjustColor(state.color, depth);
     final Color lightColor = getAdjustColor(state.color, -depth);
@@ -64,36 +65,42 @@ class PreviewBox extends StatelessWidget {
       ),
     ];
 
+    Widget previewBox = Container(
+      height: 400.0,
+      alignment: Alignment.center,
+      color: state.color,
+      child: Container(
+        width: state.size,
+        height: state.size,
+        child: Icon(
+          Icons.favorite,
+          size: iconSize,
+          color: Colors.amber,
+        ),
+        transformAlignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: state.color,
+          borderRadius: BorderRadius.circular(state.radius),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: gradientColors,
+          ),
+          boxShadow: shadowList,
+        ),
+      ),
+    );
+
+    provider.changePreview(
+      SizedBox(width: 400.0, height: 400.0, child: previewBox),
+    );
+
     return LayoutBuilder(builder: (context, BoxConstraints constraints) {
       final double pos = constraints.maxWidth / 4;
 
       return Stack(
         children: [
-          Container(
-            height: 400.0,
-            alignment: Alignment.center,
-            color: state.color,
-            child: Container(
-              width: state.size,
-              height: state.size,
-              child: Icon(
-                Icons.favorite,
-                size: iconSize,
-                color: Colors.amber,
-              ),
-              transformAlignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: state.color,
-                borderRadius: BorderRadius.circular(state.radius),
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: gradientColors,
-                ),
-                boxShadow: shadowList,
-              ),
-            ),
-          ),
+          previewBox,
           Positioned(
             top: 25.0,
             left: pos,

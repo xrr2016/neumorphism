@@ -1,4 +1,5 @@
 import '../exports.dart';
+import 'package:universal_html/html.dart' as html;
 
 class AppStateProvider extends StatefulWidget {
   final Widget child;
@@ -22,6 +23,7 @@ class AppStateProvider extends StatefulWidget {
 
 class AppStateProviderState extends State<AppStateProvider> {
   late AppState state;
+  final ScreenshotController screenshotController = ScreenshotController();
 
   changeRadius(double val) {
     state.radius = val;
@@ -73,6 +75,10 @@ class AppStateProviderState extends State<AppStateProvider> {
     state.type = type;
     setCode();
     setState(() {});
+  }
+
+  changePreview(Widget widget) {
+    state.preview = widget;
   }
 
   setCode() {
@@ -166,6 +172,47 @@ class AppStateProviderState extends State<AppStateProvider> {
   ''';
     state.code = code;
     setState(() {});
+  }
+
+  void _capturedImage(Uint8List image) async {
+    final base64data = base64Encode(image);
+    final a = html.AnchorElement(href: 'data:image/jpeg;base64,$base64data');
+    a.download = 'Neumorphism.jpg';
+    a.click();
+    a.remove();
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(AppLocalizations.of(context)!.download),
+        action: SnackBarAction(
+          label: 'OK',
+          textColor: Colors.amber,
+          onPressed: () {
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          },
+        ),
+      ),
+    );
+  }
+
+  void _catchError(onError) {
+    print(onError);
+  }
+
+  void downloadImage() async {
+    try {
+      final double pixelRatio = MediaQuery.of(context).devicePixelRatio;
+
+      screenshotController
+          .captureFromWidget(
+            state.preview,
+            pixelRatio: pixelRatio,
+          )
+          .then(_capturedImage)
+          .catchError(_catchError);
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
   @override

@@ -45,37 +45,18 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  void _downloadImage() async {
-    try {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(AppLocalizations.of(context)!.download),
-          action: SnackBarAction(
-            label: 'OK',
-            textColor: Colors.amber,
-            onPressed: () {
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            },
-          ),
-        ),
-      );
-    } catch (e) {
-      debugPrint(e.toString());
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: _copyCode,
+            onPressed: provider.downloadImage,
             icon: const Icon(Icons.download, color: Colors.white),
           ),
           const SizedBox(width: 10.0),
           IconButton(
-            onPressed: _downloadImage,
+            onPressed: _copyCode,
             icon: const Icon(Icons.copy, color: Colors.white),
           ),
           const SizedBox(width: 10.0),
@@ -110,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
+                  children: [
                     PreviewBox(),
                     SizedBox(height: 20.0),
                     StylesController(),

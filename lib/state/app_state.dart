@@ -14,6 +14,7 @@ class AppState {
   Direction direction;
   CurveType type;
   String code;
+  Widget preview;
 
   AppState({
     this.color = const Color(0xff333333),
@@ -25,5 +26,6 @@ class AppState {
     this.direction = Direction.topLeft,
     this.type = CurveType.flat,
     this.code = '',
+    this.preview = const SizedBox.shrink(),
   });
 }

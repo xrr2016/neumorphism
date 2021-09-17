@@ -37,6 +37,7 @@ dependencies:
   url_launcher: ^6.0.10
   image: ^3.0.4
   screenshot: ^1.2.3
+  universal_html: ^2.0.8
   # firebase_core: ^1.6.0
   # firebase_analytics: "^8.3.2"
 

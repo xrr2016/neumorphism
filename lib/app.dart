@@ -7,21 +7,20 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppState state = AppState();
 
-    return AppStateProvider(
-      state: state,
-      child: MaterialApp(
-        title: 'Neumorphism',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          // primarySwatch: Colors.amber,
-          textTheme: GoogleFonts.latoTextTheme(),
-        ),
-        // locale: AppLocalizations.supportedLocales.last,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        home: const HomePage(),
-        routes: appRoutes,
+    return MaterialApp(
+      title: 'Neumorphism',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        textTheme: GoogleFonts.latoTextTheme(),
       ),
+      // locale: AppLocalizations.supportedLocales.last,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      home: AppStateProvider(
+        state: state,
+        child: const HomePage(),
+      ),
+      routes: appRoutes,
     );
   }
 }

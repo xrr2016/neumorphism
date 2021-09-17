@@ -1,5 +1,7 @@
 import 'dart:ui';
 export 'dart:math';
+export 'dart:typed_data';
+export 'dart:convert';
 
 export 'package:flutter/material.dart';
 export 'package:flutter/services.dart';
