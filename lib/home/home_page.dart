@@ -2,6 +2,7 @@ import '../exports.dart';
 import './widgets/styles_controller.dart';
 import './widgets/preview_box.dart';
 import './widgets/decoration_code.dart';
+import './widgets/buyme_coffee.dart';
 
 class HomePage extends StatefulWidget {
   static String routeName = 'home_page';
@@ -50,6 +51,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         actions: [
+          const BuymeCoffee(),
+          const SizedBox(width: 10.0),
           IconButton(
             onPressed: provider.downloadImage,
             icon: const Icon(Icons.download, color: Colors.white),

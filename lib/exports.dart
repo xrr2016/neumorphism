@@ -26,6 +26,8 @@ export './state/app_state.dart';
 export './state/app_state_provider.dart';
 
 const String githubRepoUrl = 'https://github.com/xrr2016/neumorphism';
+const String buymeCoffeeUrl =
+    'https://www.buymeacoffee.com/coldstone/hi-made-app-generate-flutter-code';
 
 // https://dribbble.com/search/Glassmorphism
 // https://dribbble.com/tags/neumorphism
