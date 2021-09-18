@@ -20,7 +20,7 @@ class BuymeCoffee extends StatelessWidget {
         height: 41.0,
         margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
         child: Image.asset(
-          'images/default-yellow.webp',
+          'assets/images/default-yellow.webp',
           fit: BoxFit.cover,
         ),
       ),
