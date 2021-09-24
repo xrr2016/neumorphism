@@ -28,7 +28,5 @@ class AppState {
     this.type = CurveType.flat,
     this.code = '',
     this.preview = const SizedBox.shrink(),
-  }) {
-    print('111');
-  }
+  });
 }
