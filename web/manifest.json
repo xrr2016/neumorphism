@@ -1,11 +1,11 @@
 {
-  "name": "neumorphism",
+  "name": "Neumorphism",
   "short_name": "neumorphism",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#0175C2",
-  "theme_color": "#0175C2",
-  "description": "A new Flutter project.",
+  "background_color": "#333333",
+  "theme_color": "#333333",
+  "description": " A  web app to generate soft ui flutter code, build with flutter.",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
   "icons": [

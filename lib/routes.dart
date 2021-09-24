@@ -4,5 +4,4 @@ import './exports.dart';
 
 Map<String, Widget Function(BuildContext)> appRoutes = {
   HomePage.routeName: (BuildContext context) => const HomePage(),
-  BorderPage.routeName: (BuildContext context) => const BorderPage(),
 };

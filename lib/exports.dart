@@ -19,8 +19,6 @@ export './app.dart';
 export './utils.dart';
 export './routes.dart';
 export './home/home_page.dart';
-export './border/border_page.dart';
-
 export './state/app_state.dart';
 export './state/app_state_provider.dart';
 
