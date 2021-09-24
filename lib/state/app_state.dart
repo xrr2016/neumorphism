@@ -1,4 +1,5 @@
 import '../exports.dart';
+import 'dart:html' as html;
 
 enum Direction { topLeft, topRight, bottomLeft, bottomRight }
 
@@ -27,5 +28,7 @@ class AppState {
     this.type = CurveType.flat,
     this.code = '',
     this.preview = const SizedBox.shrink(),
-  });
+  }) {
+    print('111');
+  }
 }
