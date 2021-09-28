@@ -30,15 +30,18 @@ const String buymeCoffeeUrl =
 // https://dribbble.com/tags/neumorphism
 
 final List<Color> colors = [
+  const Color(0xffefeeee),
   const Color(0xff333333),
   const Color(0xff4caf50),
   const Color(0xff9c27b0),
   const Color(0xff5758BB),
   const Color(0xff955539),
+  const Color(0xff292d32),
   const Color(0xff6F1E51),
   const Color(0xffED4C67),
   const Color(0xffC4E538),
   const Color(0xff9980FA),
+  const Color(0xffecf0f3),
   const Color(0xffE96831),
   const Color(0xff48c0a3),
   const Color(0xffD1667C),
